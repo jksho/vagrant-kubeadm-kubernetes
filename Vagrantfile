@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
       master.vm.hostname = "master-node"
       master.vm.network "private_network", ip: "192.168.56.10"
       master.vm.provider "virtualbox" do |vb|
-          vb.memory = 4048
+          vb.memory = 2048
           vb.cpus = 2
       end
       master.vm.provision "shell", path: "scripts/common.sh"
@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
     config.vm.define "node0#{i}" do |node|
       node.vm.box = "bento/ubuntu-20.04"
       node.vm.hostname = "worker-node0#{i}"
-      node.vm.network "private_network", ip: "10.0.0.1#{i}"
+      node.vm.network "private_network", ip: "192.168.56#{i}"
       node.vm.provider "virtualbox" do |vb|
           vb.memory = 2048
           vb.cpus = 1
