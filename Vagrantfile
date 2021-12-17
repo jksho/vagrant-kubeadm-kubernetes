@@ -27,7 +27,7 @@ Vagrant.configure("2") do |config|
           node.vm.provider "virtualbox" do |vb|
             vb.memory = 2048
             vb.cpus = 1
-        end
+          end
         node.vm.provision "shell", path: "scripts/common.sh"
         node.vm.provision "shell", path: "scripts/node.sh"
       end
