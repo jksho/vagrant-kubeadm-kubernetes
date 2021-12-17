@@ -32,4 +32,4 @@ Vagrant.configure("2") do |config|
         node.vm.provision "shell", path: "scripts/node.sh"
        end
     end
-end|
+end
