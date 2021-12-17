@@ -30,6 +30,6 @@ Vagrant.configure("2") do |config|
           end
         node.vm.provision "shell", path: "scripts/common.sh"
         node.vm.provision "shell", path: "scripts/node.sh"
-      end
+       end
     end
 end|
