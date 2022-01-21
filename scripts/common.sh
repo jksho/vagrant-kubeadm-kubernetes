@@ -61,3 +61,6 @@ sudo apt-mark hold kubelet kubeadm kubectl
 source <(kubectl completion bash)
 echo "source <(kubectl completion bash)" >> ~/.bashrc
 . /etc/bash_completion
+echo ". /etc/bash_completion" >> ~/.bashrc
+echo "alias k=kubectl" >> ~/.bashrc
+echo "complete -F __start_kubectl k" >> ~/.bashrc
