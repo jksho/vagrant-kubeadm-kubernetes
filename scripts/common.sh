@@ -15,7 +15,8 @@ sudo apt-get install -y \
     ca-certificates \
     curl \
     gnupg \
-    lsb-release
+    lsb-release \
+    bash-completion
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
@@ -57,4 +58,6 @@ sudo apt-get update -y
 sudo apt-get install -y kubelet=$KUBERNETES_VERSION kubectl=$KUBERNETES_VERSION kubeadm=$KUBERNETES_VERSION
 
 sudo apt-mark hold kubelet kubeadm kubectl
-
+source <(kubectl completion bash)
+echo "source <(kubectl completion bash)" >> ~/.bashrc
+. /etc/bash_completion
