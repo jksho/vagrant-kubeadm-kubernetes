@@ -2,7 +2,8 @@
 
 # Variable Declaration
 
-KUBERNETES_VERSION="1.20.6-00"
+# KUBERNETES_VERSION="1.20.6-00"
+KUBERNETES_VERSION="1.23.6-00"
 
 # disable swap 
 sudo swapoff -a
@@ -11,6 +12,7 @@ sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
 sudo apt-get update -y
 sudo apt-get install -y \
+    ansible \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -64,3 +66,13 @@ echo "source <(kubectl completion bash)" >> ~/.bashrc
 echo ". /etc/bash_completion" >> ~/.bashrc
 echo "alias k=kubectl" >> ~/.bashrc
 echo "complete -F __start_kubectl k" >> ~/.bashrc
+echo "alias kaf='kubectl apply -f'" >> ~/.bashrc
+echo "alias kgp='kubectl get pod'" >> ~/.bashrc
+echo "alias kgd='kubectl get deploy'" >> ~/.bashrc
+echo "alias kga='kubectl get pod,svc,ep,cm,secret,pv,pvc,sc --show-labels'" >> ~/.bashrc
+echo "alias kgn='kubectl get ns -A'" >> ~/.bashrc
+echo "alias kdp='kubectl describe pod'" >> ~/.bashrc
+echo "alias kdd='kubectl describe deploy'" >> ~/.bashrc
+echo "alias kx='f() { [ "$1" ] && kubectl config use-context $1 || kubectl config current-context ; } ; f'" >> ~/.bashrc
+echo "alias kn='f() { [ "$1" ] && kubectl config set-context --current --namespace $1 || kubectl config view --minify | grep namespace | cut -d" " -f6 ; } ; f'" >> ~/.bashrc
+echo "autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab number relativenumber paste autoindent smartindent" >> ~/.vimrc
